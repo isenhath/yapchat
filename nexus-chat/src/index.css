@@ -1,0 +1,185 @@
+:root {
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --squircle-radius: 40px;
+  --base-gradient: linear-gradient(135deg, #e8edf7 0%, #cfd8ee 100%);
+  --accent-blue: #4c66b3;
+  --accent-pink: #e16b86;
+  --sidebar-bg: rgba(255, 255, 255, 0.08);
+  /* Base Variables - Light Mode Default */
+  --bg-dark-overlay: transparent;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --glass-bg: rgba(255, 255, 255, 0.35);
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.45);
+  --card-shadow: 0 18px 42px rgba(15, 23, 42, 0.12);
+  --glass-blur-soft: 10px;
+  --glass-blur: 18px;
+  --glass-blur-strong: 30px;
+  --chat-bubble-me: #2f6bff;
+  --chat-bubble-me-text: #fff;
+  --chat-bubble-other: rgba(255, 255, 255, 0.5);
+}
+
+/* Global Dark Mode Overrides */
+body.dark-mode {
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --glass-bg: rgba(15, 23, 42, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.12);
+  --bg-dark-overlay: rgba(0, 0, 0, 0.4);
+  --chat-bubble-other: rgba(255, 255, 255, 0.1);
+  --sidebar-bg: rgba(15, 23, 42, 0.4);
+  --card-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --glass-blur-soft: 6px;
+    --glass-blur: 10px;
+    --glass-blur-strong: 16px;
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --glass-blur-soft: 8px;
+    --glass-blur: 12px;
+    --glass-blur-strong: 20px;
+  }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root {
+    --glass-bg: rgba(255, 255, 255, 0.9);
+  }
+  body.dark-mode {
+    --glass-bg: rgba(15, 23, 42, 0.9);
+  }
+}
+
+/* Midnight Theme */
+.theme-midnight {
+  --base-gradient: linear-gradient(135deg, #e8edf7 0%, #cfd8ee 100%);
+  --accent-blue: #4c66b3;
+}
+
+body.dark-mode.theme-midnight {
+  --base-gradient: linear-gradient(135deg, #0b1120 0%, #141b34 100%);
+  --accent-blue: #78a6ff;
+}
+
+/* Crystal Theme */
+.theme-crystal {
+  --base-gradient: linear-gradient(135deg, #f2f5ff 0%, #e2e8f7 100%);
+  --accent-blue: #6d7bd6;
+}
+
+body.dark-mode.theme-crystal {
+  --base-gradient: linear-gradient(135deg, #1a2142 0%, #252b54 100%);
+  --accent-blue: #93a5ff;
+}
+
+/* Mint Theme */
+.theme-mint {
+  --base-gradient: linear-gradient(135deg, #edf7f3 0%, #dcefe7 100%);
+  --accent-blue: #35a389;
+}
+
+body.dark-mode.theme-mint {
+  --base-gradient: linear-gradient(135deg, #0b2f2a 0%, #13403a 100%);
+  --accent-blue: #5fd1b1;
+}
+
+/* Rose Theme */
+.theme-rose {
+  --base-gradient: linear-gradient(135deg, #f7eef2 0%, #eedce4 100%);
+  --accent-blue: #c96b8c;
+}
+
+body.dark-mode.theme-rose {
+  --base-gradient: linear-gradient(135deg, #35131f 0%, #4a1a2a 100%);
+  --accent-blue: #f098b4;
+}
+
+/* Slate Theme */
+.theme-slate {
+  --base-gradient: linear-gradient(135deg, #eef2f6 0%, #dde6ee 100%);
+  --accent-blue: #5f7087;
+}
+
+body.dark-mode.theme-slate {
+  --base-gradient: linear-gradient(135deg, #121b27 0%, #1c2736 100%);
+  --accent-blue: #93a1b7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--base-gradient);
+  /* Add overlay for dark mode dimming if needed */
+  background-color: #000;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-primary);
+  transition: all 0.5s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/* Sky Theme */
+.theme-sky {
+  --base-gradient: linear-gradient(135deg, #eef6ff 0%, #dfeaf7 100%);
+  --accent-blue: #4b97c9;
+}
+
+body.dark-mode.theme-sky {
+  --base-gradient: linear-gradient(135deg, #0e2a3f 0%, #13354c 100%);
+  --accent-blue: #6fb6e6;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur-strong));
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+  border: 1px solid var(--glass-border);
+  border-top: 1px solid var(--glass-highlight);
+  border-left: 1px solid var(--glass-highlight);
+  border-radius: var(--squircle-radius);
+  box-shadow: var(--card-shadow);
+  transition: all 0.5s ease;
+}
+
+
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
